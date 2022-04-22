@@ -15,7 +15,11 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from django.conf.urls import include # add this
 
 urlpatterns = [
+    path('api/pets/', include('posts_api.urls')), # add this
+    # FOR OTHER APPS/MODELS - >
+    # path('api/users', include('users_api.urls')), make users url
     path('admin/', admin.site.urls),
 ]

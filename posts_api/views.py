@@ -3,11 +3,11 @@ from rest_framework import generics
 from .serializers import PostSerializer
 from .models import Post
 
-# Create your views here.
+# Create your views here - returns a web response from seralizer
 class PostList(generics.ListCreateAPIView):
-    queryset = Contact.objects.all().order_by('id') # tell django how to retrieve all objects from the DB, order by id ascending
-    serializer_class = ContactSerializer # tell django what serializer to use
+    queryset = Post.objects.all().order_by('id') # tell django how to retrieve all objects from the DB, order by id ascending
+    serializer_class = PostSerializer # tell django what serializer to use
 
 class PostDetail(generics.RetrieveUpdateDestroyAPIView):
-    queryset = Contact.objects.all().order_by('id')
-    serializer_class = ContactSerializer
+    queryset = Post.objects.all().order_by('id')
+    serializer_class = PostSerializer
