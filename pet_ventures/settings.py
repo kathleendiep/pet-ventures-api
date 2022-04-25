@@ -39,12 +39,32 @@ INSTALLED_APPS = [
     'rest_framework',  # add this
     'posts_api',
     'django.contrib.admin',
-    'django.contrib.auth',
+    'django.contrib.auth', # needed to install 
+    'reset_migrations',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'rest_framework.authtoken',
 ]
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+    'rest_framework.authentication.BasicAuthentication',
+    'rest_framework.authentication.SessionAuthentication',
+    'rest_framework.authentication.TokenAuthentication',
+    ],
+    'DEFAULT_PERMISSION_CLASSES': [
+    'rest_framework.permissions.IsAuthenticated',
+    ],
+}
+# 'DEFAULT_PERMISSION_CLASSES': [
+#    'rest_framework.permissions.AllowAny',
+# ]
+# AUTH_USER_MODEL = 'profiles.User'
+# ACCOUNT_USER_MODEL_USERNAME_FIELD = None
+# ACCOUNT_EMAIL_REQUIRED = True
+# ACCOUNT_USERNAME_REQUIRED = False
+# ACCOUNT_AUTHENTICATION_METHOD = 'email'
 
 MIDDLEWARE = [
     'corsheaders.middleware.CorsMiddleware', # this makes the cors package run for all requests.  A bit like app.use() in express
@@ -88,7 +108,7 @@ DATABASES = {
     # this has new db: 
         'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'petventures_api',
+        'NAME': 'pet_ventures_api',
         # this refers to pgadmin etc - make sure its the same 
         'USER': 'postgres',
         'PASSWORD': 'coco',
@@ -97,6 +117,7 @@ DATABASES = {
 }
 db_from_env = dj_database_url.config(conn_max_age=600) # add this
 DATABASES['default'].update(db_from_env) # add this
+
 
 # Password validation
 # https://docs.djangoproject.com/en/4.0/ref/settings/#auth-password-validators
