@@ -11,7 +11,6 @@ class PostList(generics.ListCreateAPIView):
     serializer_class = PostSerializer # tell django what serializer to use
     # authentication_classes = [TokenAuthentication]
 
-
 class PostDetail(generics.RetrieveUpdateDestroyAPIView):
     queryset = Post.objects.all().order_by('id')
     serializer_class = PostSerializer
@@ -19,4 +18,4 @@ class PostDetail(generics.RetrieveUpdateDestroyAPIView):
 class UserViewSet(generics.ListCreateAPIView): 
     queryset = User.objects.all().order_by('id')
     serializer_class = UserSerializer
-    authentication_classes = [TokenAuthentication]
+    # authentication_classes = [TokenAuthentication]
