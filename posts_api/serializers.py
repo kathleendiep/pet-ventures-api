@@ -1,6 +1,7 @@
 from rest_framework import serializers
 from .models import Post
 from django.contrib.auth.models import User
+from rest_framework.authtoken.views import Token
 # serializers.ModelSerializer just tells django to convert sql objects to JSON data types
 class PostSerializer(serializers.ModelSerializer):
     class Meta:
@@ -19,4 +20,5 @@ class UserSerializer (serializers.ModelSerializer):
 
     def create(self, validated_data):
             user = User.objects.create_user(**validated_data)
+            Token.objects.create(user=user)
             return user
