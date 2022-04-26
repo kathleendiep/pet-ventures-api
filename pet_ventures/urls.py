@@ -20,7 +20,7 @@ from django.conf.urls import include # add this
 from rest_framework.authtoken.views import obtain_auth_token
 
 urlpatterns = [
-    path('api/pets/', include('posts_api.urls')), # add this
+    path('api/', include('posts_api.urls')), # add this
     # FOR OTHER APPS/MODELS - >
     path("accounts/", include("django.contrib.auth.urls")),  # new
     # path('api/users', include('users_api.urls')), make users url
