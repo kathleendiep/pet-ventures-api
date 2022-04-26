@@ -1,1 +1,1 @@
-web: gunicorn pet_ventures_api.wsgi
+web: gunicorn pet_ventures.wsgi
