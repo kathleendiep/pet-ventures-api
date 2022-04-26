@@ -30,8 +30,6 @@ SECRET_KEY = os.environ['SECRET_KEY'] # Instead of your actual secret key
 DEBUG = True
 
 ALLOWED_HOSTS = ['localhost', 'pet-ventures-api.herokuapp.com']
-
-
 # Application definition
 
 INSTALLED_APPS = [
