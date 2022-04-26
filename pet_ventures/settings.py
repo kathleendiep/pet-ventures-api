@@ -54,7 +54,7 @@ REST_FRAMEWORK = {
     'rest_framework.authentication.TokenAuthentication',
     ],
     'DEFAULT_PERMISSION_CLASSES': [
-    'rest_framework.permissions.IsAuthenticated',
+    'rest_framework.permissions.AllowAny',
     ],
 }
 # 'DEFAULT_PERMISSION_CLASSES': [
@@ -78,6 +78,9 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 CORS_ALLOW_ALL_ORIGINS = True # add this
+CORS_ALLOW_ORIGINS = [ 
+    'http://localhost:3000',
+]
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage' # add this
 
 ROOT_URLCONF = 'pet_ventures.urls'
