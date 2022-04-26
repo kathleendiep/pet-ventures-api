@@ -8,4 +8,4 @@ class Post(models.Model):
     info = models.CharField(max_length=200)
     city = models.CharField(max_length=50)
     state = models.CharField(max_length=50)
-    image = models.CharField(max_length=2000, default='')
+    img = models.CharField(max_length=2000, default='')
