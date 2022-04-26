@@ -31,7 +31,6 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['localhost', 'pet-ventures-api.herokuapp.com']
 # Application definition
-
 INSTALLED_APPS = [
     'corsheaders', # add this
     'rest_framework',  # add this
