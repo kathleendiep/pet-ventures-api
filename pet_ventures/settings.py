@@ -14,6 +14,9 @@ import dj_database_url # add this
 import os # add this
 from dotenv import load_dotenv
 load_dotenv()
+import cloudinary
+import cloudinary.uploader
+import cloudinary.api
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 # BASE_DIR = Path(__file__).resolve().parent.parent
@@ -29,6 +32,12 @@ SECRET_KEY = os.environ['SECRET_KEY'] # Instead of your actual secret key
 DEBUG = True
 
 ALLOWED_HOSTS = ['localhost', 'pet-ventures-api.herokuapp.com']
+cloudinary.config( 
+    cloud_name = os.environ['CLOUD_NAME'],
+    api_key = os.environ['API_KEY'],
+    api_secret = os.environ['API_SECRET'],
+)
+
 # Application definition
 INSTALLED_APPS = [
     'corsheaders', # add this
@@ -42,7 +51,15 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework.authtoken',
+    'cloudinary',
 ]
+CLOUDINARY_STORAGE = {
+    'CLOUD_NAME': os.environ['CLOUD_NAME'],
+    'API_KEY': os.environ['API_KEY'],
+    'API_SECRET': os.environ['API_SECRET'],
+}
+DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
+
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': [
     'rest_framework.authentication.BasicAuthentication',
@@ -53,9 +70,7 @@ REST_FRAMEWORK = {
     'rest_framework.permissions.AllowAny',
     ],
 }
-# 'DEFAULT_PERMISSION_CLASSES': [
-#    'rest_framework.permissions.AllowAny',
-# ]
+
 # AUTH_USER_MODEL = 'profiles.User'
 # ACCOUNT_USER_MODEL_USERNAME_FIELD = None
 # ACCOUNT_EMAIL_REQUIRED = True
