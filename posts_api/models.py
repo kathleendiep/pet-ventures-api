@@ -11,7 +11,7 @@ class Post(models.Model):
     info = models.CharField(max_length=200)
     city = models.CharField(max_length=50)
     state = models.CharField(max_length=100)
-    img = CloudinaryField('image', default="")
+    img = CloudinaryField('image', default="image")
     # img = models.CharField(max_length=100, blank=True, null=True, default="")
     # pub_date = models.DateField(null=True, blank=True)
     # user = models.ForeignKey(User, related_name='posts')
