@@ -6,7 +6,7 @@ from rest_framework.authtoken.views import Token
 class PostSerializer(serializers.ModelSerializer):
     class Meta:
         model = Post  # tell django which model to use
-        fields = ('id', 'name', 'category', 'breed', 'info', 'city', 'state', 'img',)  # tell django which fields to include
+        fields = ('id', 'name', 'category', 'breed', 'info', 'city', 'state', 'img', 'image',)  # tell django which fields to include
 
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
