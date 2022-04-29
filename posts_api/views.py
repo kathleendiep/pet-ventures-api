@@ -17,7 +17,7 @@ class PostDetail(generics.RetrieveUpdateDestroyAPIView):
     queryset = Post.objects.all().order_by('id')
     serializer_class = PostSerializer
     authentication_classes = [TokenAuthentication]
-    permission_classes = [IsAuthenticated]
+    # permission_classes = [IsAuthenticated]
 
 class UserViewSet(generics.ListCreateAPIView): 
     queryset = User.objects.all().order_by('id')
