@@ -26,4 +26,6 @@ urlpatterns = [
     # path('api/users', include('users_api.urls')), make users url
     path('admin/', admin.site.urls),
     path('auth/', obtain_auth_token),
+    path('api/', include('profiles_api.urls')),
+
 ]

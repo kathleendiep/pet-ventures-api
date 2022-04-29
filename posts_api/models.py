@@ -2,6 +2,7 @@ from django.db import models
 from datetime import date
 import cloudinary
 from cloudinary.models import CloudinaryField
+# how to add users? 
 
 # Create your models here.
 class Post(models.Model):
