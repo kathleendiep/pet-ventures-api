@@ -1,5 +1,6 @@
+import imghdr
 from rest_framework import serializers
-from .models import Profile
+from .models import Profile, Dweet
 from django.contrib.auth.models import User
 from rest_framework.authtoken.views import Token
 from django.db.models.signals import post_save
@@ -7,6 +8,8 @@ from django.dispatch import receiver
 
 # serializers.ModelSerializer just tells django to convert sql objects to JSON data types
 class ProfileSerializer(serializers.ModelSerializer):
+    user = serializers.CharField()
+    follows = serializers.CharField()
     class Meta:
         model = Profile  # tell django which model to use
         fields = ('id', 'user', 'follows')  # tell django which fields to include
@@ -20,7 +23,13 @@ class ProfileSerializer(serializers.ModelSerializer):
     
     def profile_list(self,validated_data): 
         profiles=validated_data('profiles')
-        return profiles 
+        return profiles
+
+class ArticleSerializer(serializers.ModelSerializer):
+    user = serializers.CharField()
+    class Meta:
+        model = Dweet  # tell django which model to use
+        fields = ('id', 'user', 'body', 'created_at', 'petname','category', 'breed', 'city', 'state', 'img',)  # tell django which fields to include
 
 # how to make it follow others
     # @receiver(post_save, sender=User)

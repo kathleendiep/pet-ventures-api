@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from rest_framework import generics
-from .serializers import ProfileSerializer
-from .models import Profile
+from .serializers import ProfileSerializer, ArticleSerializer
+from .models import Profile, Dweet
 
 # Create your views here - returns a web response from seralizer
 class ProfileList(generics.ListCreateAPIView):
@@ -17,6 +17,14 @@ def profile_list(request):
     profiles = Profile.objects.exclude(user=request.user)
     return render(request,'', {"profiles": profiles})
 
+class ArticleList(generics.ListCreateAPIView):
+    queryset = Dweet.objects.all().order_by('id') # tell django how to retrieve all objects from the DB, order by id ascending
+    serializer_class = ArticleSerializer # tell django what serializer to use
+
+
+class ArticleDetail(generics.RetrieveUpdateDestroyAPIView):
+    queryset = Dweet.objects.all().order_by('id')
+    serializer_class = ArticleSerializer
 
 
 # class UserViewSet(generics.ListCreateAPIView): 
