@@ -26,7 +26,7 @@ class ProfileSerializer(serializers.ModelSerializer):
         return profiles
 
 class ArticleSerializer(serializers.ModelSerializer):
-    user = serializers.CharField()
+    # user = serializers.CharField()
     class Meta:
         model = Dweet  # tell django which model to use
         fields = ('id', 'user', 'body', 'created_at', 'petname','category', 'breed', 'city', 'state', 'img',)  # tell django which fields to include
