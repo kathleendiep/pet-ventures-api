@@ -11,7 +11,7 @@ class PostList(generics.ListCreateAPIView):
     queryset = Post.objects.all().order_by('id') # tell django how to retrieve all objects from the DB, order by id ascending
     serializer_class = PostSerializer # tell django what serializer to use
     authentication_classes = [TokenAuthentication]
-    permission_classes = [IsAuthenticatedOrReadOnly]
+    # permission_classes = [IsAuthenticatedOrReadOnly]
 
 class PostDetail(generics.RetrieveUpdateDestroyAPIView):
     queryset = Post.objects.all().order_by('id')
@@ -24,4 +24,3 @@ class UserViewSet(generics.ListCreateAPIView):
     serializer_class = UserSerializer
     authentication_classes = [TokenAuthentication]
     permission_classes = [IsAuthenticatedOrReadOnly]
-    # authentication_classes = [TokenAuthentication]
