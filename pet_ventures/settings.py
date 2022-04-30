@@ -41,6 +41,7 @@ cloudinary.config(
 # Application definition
 INSTALLED_APPS = [
     'corsheaders', # add this
+    'social_django',
     'rest_framework',  # add this
     'posts_api',
     'django.contrib.admin',
@@ -108,6 +109,8 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'social_django.context_processors.backends',
+                'social_django.context_processors.login_redirect',
             ],
         },
     },
@@ -133,7 +136,12 @@ DATABASES = {
 db_from_env = dj_database_url.config(conn_max_age=600) # add this
 DATABASES['default'].update(db_from_env) # add this
 
-
+AUTHENTICATION_BACKENDS = [
+    "django.contrib.auth.backends.ModelBackend",
+    "social_core.backends.github.GithubOAuth2",
+]
+SOCIAL_AUTH_GITHUB_KEY = os.environ.get("SOCIAL_AUTH_GITHUB_KEY")
+SOCIAL_AUTH_GITHUB_SECRET = os.environ.get("SOCIAL_AUTH_GITHUB_SECRET")
 # Password validation
 # https://docs.djangoproject.com/en/4.0/ref/settings/#auth-password-validators
 
