@@ -9,3 +9,4 @@ urlpatterns = [
     path('pets/<int:pk>/', views.PostDetail.as_view(), name='post_detail'), # api/contacts will be routed to the ContactDetail view for handling
     path('users/', views.UserViewSet.as_view(), name='user_detail'),
     path('auth/', include("social_django.urls")),
+]
