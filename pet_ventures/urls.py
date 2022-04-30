@@ -27,5 +27,4 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('auth/', obtain_auth_token),
     path('api/', include('profiles_api.urls')),
-
 ]
